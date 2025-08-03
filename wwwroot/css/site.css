@@ -1,0 +1,91 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+}
+
+#div_geral_campos {
+    display: inline-flex;
+    border: dashed;
+    width: 560px;
+    padding: 0px;
+}
+
+#div_tempo {
+    display: flex;
+    border: dashed;
+    width: 50%;
+    position: relative;
+    margin: 0px;
+}
+
+#div_potencia {
+    display: flex;
+    border: dashed;
+    width: 50%;
+    height: 72px;
+    position: relative;
+}
+
+#div_botoes {
+    display: inline-table;
+    border: dashed;
+    width: 560px;
+    height: 118px;
+    position: relative;
+    margin: 1% 28%;
+}
+
+label.titulo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #333;
+    display: flex;
+    margin: 2% 2%;
+    /*text-align: center;
+    position: relative;
+    border: dashed;
+    width: 560px;
+    height: 118px;*/
+}
+
+input.campo {
+    display: inline-block;
+    flex-direction: column;
+    margin: 15px;
+    font-family: inherit;
+    font-size: inherit;
+    position: relative;
+    width: 115px !important;
+    height: 36px;
+    align-items: center !important;
+    padding: 0px 2px 2px 2px;
+}
+
+#tempoFormato{
+    display:none;
+}
+
+button.botao {
+    flex-direction: column;
+    margin-bottom: 15px;
+    width: 50%;
+    border-bottom-width: thick;
+}

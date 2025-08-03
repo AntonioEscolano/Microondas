@@ -1,0 +1,26 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Microondas</h1>
+    @* <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p> *@
+    
+    <div id="div_geral_campos">
+        <div id="div_tempo">
+            <label class="titulo">Tempo</label>
+            <input type="number" class="campo" id="tempo" name="tempo" min="0" max="120" value="0" />
+            <input type="time" class="campo" id="tempoFormato" name="tempoFormato" value="00:00" />
+        </div>
+        <div id="div_potencia">
+            <label class="titulo">Potência</label>
+            <input type="number" class="campo" id="potencia" name="potencia" min="0" max="10" value="0" />
+        </div>
+    </div>    
+    <div id="div_botoes">
+        <input type="hidden" id="status" value="" />
+        <button class="botao" id="iniciar">Iniciar / +30</button>
+        <button class="botao" id="pausarCancelar">Pausar / Cancelar</button>
+        <label class="mensagem" id="mensagens"></label>
+    </div>
+</div>
