@@ -1,0 +1,34 @@
+﻿@{
+    ViewData["Title"] = "Cadastro";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Microondas -> Cadastro de Nova Programação</h1>
+
+    <div id="div_geral_campos_cadastro">
+        <div id="div_cadastro_linha">
+            <label class="titulo_cadastro">Nome Da Programação</label>
+            <input type="text" class="campo_cadastro" id="nomeDaProgramcao" value="" maxlength="100" placeholder="Digite o nome desta programação." />
+        </div>
+        <div id="div_cadastro_linha">
+            <label class="titulo_cadastro">Nome do Alimento</label>
+            <input type="text" class="campo_cadastro" id="alimento" value="" maxlength="50" placeholder="Digite o nome do alimento." />
+        </div>
+        <div id="div_cadastro_linha">
+            <label class="titulo_cadastro">Tempo Recomendado</label>
+            <input type="text" class="campo_cadastro" id="tempo" value="" maxlength="1000" placeholder="120 Segundos equivalem à 02:00 Minutos por exemplo." />
+        </div>
+        <div id="div_cadastro_linha">
+            <label class="titulo_cadastro">Potencia</label>
+            <input type="text" class="campo_cadastro" id="potencia" value="" maxlength="100" placeholder="Potência máxima permitida é 10!" />
+        </div>
+        <div id="div_cadastro_linha">
+            <label class="titulo_cadastro">Símbolo De Aquecimento</label>
+            <input type="text" class="campo_cadastro" id="stringDeAquecimento" value="" maxlength="100" placeholder="Não é permitido repetir símbolos. Exemplo §" />
+        </div>
+        <div id="div_cadastro_linha_area">
+            <label class="titulo_cadastro">Instrucoes Complementares</label>
+            <input type="text" class="campo_cadastro_area" id="instrucoesComplementares" value="" maxlength="100" placeholder="Descreva como será realizado o uso desta programação." />
+        </div>
+    </div>
+</div>

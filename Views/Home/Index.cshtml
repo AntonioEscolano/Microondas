@@ -1,5 +1,6 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
+﻿@model Microondas.ViewModel.ProgramacaoViewModel
+@{
+    ViewData["Title"] = "Microondas";
 }
 
 <div class="text-center">
@@ -16,7 +17,33 @@
             <label class="titulo">Potência</label>
             <input type="number" class="campo" id="potencia" name="potencia" min="0" max="10" value="0" />
         </div>
-    </div>    
+    </div>
+    <div id="div_geral_programacao">
+        <div>
+            @{
+                <select id="nome_programacao">
+                    <option value="0">Selecione a Programação</option>
+                    @foreach (ProgramacaoModel item in Model._programacao)
+                    {
+                        <option value="@item.idProgramacao">@item.nomeDaProgramacao</option>
+                    }
+                </select>
+            }
+            <label class="titulo_programcao" id="lbl_string_aquecimento"></label>
+        </div>
+        
+
+        <div>
+            <label class="titulo_programcao">Nome da Programação:</label><label class="nomes_campos" id="lbl_nome"></label>
+        </div>
+        <div>
+            <label class="titulo_programcao">Nome do Alimento:</label><label class="nomes_campos" id="lbl_alimento"></label>
+        </div>
+        <div>
+            <label class="titulo_programcao">Instruções:</label><label class="nomes_campos area" id="lbl_instrucoes"></label>
+        </div>
+    </div>
+    
     <div id="div_botoes">
         <input type="hidden" id="status" value="" />
         <button class="botao" id="iniciar">Iniciar / +30</button>

@@ -21,11 +21,21 @@ body {
   margin-bottom: 60px;
 }
 
+/*  Microondas Página  */
+
 #div_geral_campos {
     display: inline-flex;
     border: dashed;
     width: 560px;
     padding: 0px;
+}
+
+#div_geral_programacao {
+    /* display: inline-flex; */
+    border: dashed;
+    width: 560px;
+    /* padding: 0px; */
+    margin: 0px 0px 0px 369px;
 }
 
 #div_tempo {
@@ -59,12 +69,45 @@ label.titulo {
     color: #333;
     display: flex;
     margin: 2% 2%;
+    width: 132px;
+    border: outset;
+    height: 42px;
+    padding: 0px 5px;
     /*text-align: center;
     position: relative;
     border: dashed;
     width: 560px;
     height: 118px;*/
 }
+
+label.titulo_programcao {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #333;
+    display: flex;
+    margin: 2% 2%;
+    width: 285px;
+    border: outset;
+    height: 42px;
+    padding: 0px 5px;
+}
+
+label.nomes_campos {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #333;
+    display: inline-flex;
+    margin: 2% 2%;
+    width: 537px;
+    border: outset;
+    height: 42px;
+    padding: 0px 5px;
+}
+
+label.nomes_campos.area {
+    height: 154px;
+ }
+    
 
 input.campo {
     display: inline-block;
@@ -79,7 +122,7 @@ input.campo {
     padding: 0px 2px 2px 2px;
 }
 
-#tempoFormato{
+input.tempoFormato{
     display:none;
 }
 
@@ -89,3 +132,54 @@ button.botao {
     width: 50%;
     border-bottom-width: thick;
 }
+
+/*  Microondas Página  */
+/*  Cadastro Página  */
+
+#div_geral_campos_cadastro {
+    border: dashed;
+    display: inline-block;
+    width: 1281px;
+    padding: 0px;
+}
+
+#div_cadastro_linha {
+    border: dashed;
+    width: 100%;
+    height: 57px;
+    padding: 0px;
+    margin: 0px;
+}
+
+#div_cadastro_linha_area {
+    border: dashed;
+    width: 100%;
+    height: 267px;
+    padding: 0px;
+    margin: 0px;
+}
+
+label.titulo_cadastro {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #333;
+    margin: 7px 6px;
+    width: 262px;
+    border: outset;
+}
+
+input.campo_cadastro {
+    position: relative;
+        width: 76% !important;
+    margin: 7px 7px !important;
+}
+
+input.campo_cadastro_area {
+    position: relative;
+    width: 76% !important;
+    height: 247px;
+    margin: 7px 7px !important;
+}
+
+
+/*  Cadastro Página  */

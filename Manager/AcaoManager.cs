@@ -1,15 +1,23 @@
-﻿using Microondas.Models;
+﻿using Microondas.Data;
+using Microondas.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace Microondas.Manager
 {
-    public class Acao
+    public class AcaoManager
     {
-        public EntredaViewModel VerificaDados(EntredaViewModel _dados)
+        //private readonly AppDbContext _context;
+        //public AcaoManager(AppDbContext context)
+        //{
+        //    _context = context;
+        //}
+
+        public EntredaVW VerificaDados(EntredaVW _dados)
         {
             // Verifica o Tempo            
             if (_dados.Tempo >= 0 && _dados.Tempo <= 120)
             {
-                if ( (_dados.Tempo == 0 && _dados.Status == false) || (_dados.Tempo + 30) <= 120 && _dados.Status == true)
+                if ((_dados.Tempo == 0 && _dados.Status == false) || (_dados.Tempo + 30) <= 120 && _dados.Status == true)
                 {
                     _dados.Tempo += 30;
                 }
@@ -50,5 +58,7 @@ namespace Microondas.Manager
 
             return _tempoDefinido;
         }
+
+        
     }
 }

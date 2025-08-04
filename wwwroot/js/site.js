@@ -77,19 +77,76 @@ $("#pausarCancelar").on("click", function () {
     }
 });
 
+$("#nome_programacao").on("change", function () {
+    var _id = (this).value;
+    const _nome = document.getElementById('lbl_nome');
+    const _alimento = document.getElementById('lbl_alimento');
+    const _tempo = document.getElementById('tempo');
+    const _tempoFormato = document.getElementById('tempoFormato');
+    const _potencia = document.getElementById('potencia');
+    const _string_aquecimento = document.getElementById('lbl_string_aquecimento');
+    const _instrucoes = document.getElementById('lbl_instrucoes');
+
+    $.ajax({
+        type: "POST",
+        url: "Home/RecebeDadosProgramacao",
+        data: {
+            "_id": _id
+        },
+        success: function (response) {
+            //Retorno dos dados
+
+            _tempo.style.display = "none";
+            _tempoFormato.style.display = "inline-block";
+
+            _nome.textContent = response.nomeDaProgramacao.trim();
+            _alimento.textContent = response.alimento.trim();
+            _tempoFormato.value = response.tempo;
+            _potencia.value = response.potencia;
+            _string_aquecimento.textContent = response.stringDeAquecimento.trim();
+            _instrucoes.textContent = response.instrucoesComplementares.trim();
+
+            adicionarReadonly()
+
+            console.log(`ID_PROGRAMACAO: ${response.idProgramacao}, NOME_DO_PROGRAMA: ${response.nomeDaProgramacao}, ALIMENTO: ${response.alimento}, TEMPO: ${response.tempo}, POTENCIA: ${response.potencia}, STRING_DE_AQUECIMENTO: ${response.stringDeAquecimento}, INSTRUCOES_COMPLEMENTARES: ${response.instrucoesComplementares}`);
+        },
+        error: function (xhr, status, error) {
+            console.error(error);
+        }
+    });
+});
+
 //Transição de campo INPUT para entrada de dados
 function mudarCampoTempo() {
     const _tempo = document.getElementById('tempo');
     const _tempoFormato = document.getElementById('tempoFormato');
-    _tempo.style.display = "inline-block";
-    _tempoFormato.style.display = "none";
+    
+    if (!_tempoFormato.hasAttribute('readonly')) {
+        _tempo.style.display = "inline-block";
+        _tempoFormato.style.display = "none";
 
-    setTimeout(() => {
-        $("#tempo").trigger('click');
-    }, 1500);
+        setTimeout(() => {
+            $("#tempo").trigger('click');
+        }, 1500);
+    }
+}
+
+function adicionarReadonly() {
+    const _tempoFormato = document.getElementById('tempoFormato');
+    const _potencia = document.getElementById('potencia');
+
+    if (!_tempoFormato.hasAttribute('readonly')) {
+        _tempoFormato.setAttribute('readonly', '');
+    }
+    if (!_potencia.hasAttribute('readonly')) {
+        _potencia.setAttribute('readonly', '');
+    }
 }
 
 window.onload = function () {
     const _tempoFormato = document.getElementById('tempoFormato');
-    _tempoFormato.style.display = "none !important" ;
+
+    if (_tempoFormato) {
+        _tempoFormato.style.display = "none !important";
+    }
 };
