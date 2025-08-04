@@ -116,6 +116,39 @@ $("#nome_programacao").on("change", function () {
     });
 });
 
+//Verificar Símbolo
+$("#stringDeAquecimento").on("blur", function () {
+    const _simbolo = (this).value.trim();
+    //debugger;
+    if (_simbolo.length > 0) {
+        $.ajax({
+            type: "POST",
+            url: "Cadastro/VerificarSimbolo",
+            data: {
+                "_simbolo": _simbolo
+            },
+            success: function (response) {
+                //Retorno dos dados
+
+                if (response) {
+                    $("#stringDeAquecimento").val(""); //Limpa campo
+                    alert("O símbolo já está sendo usado! \nPor favor escolha outro símbolo que nunca tenha sido utilizado em uma programação!");
+                }
+            },
+            error: function (xhr, status, error) {
+                console.error(error);
+            }
+        });
+    }
+});
+
+//Cadastrar Programação
+$("#btn_cadastrar").on("click", function () {
+    alert("OK");
+    var _form = document.getElementById('form_cadastro_Programacao');
+    _form.submit();
+});
+
 //Transição de campo INPUT para entrada de dados
 function mudarCampoTempo() {
     const _tempo = document.getElementById('tempo');

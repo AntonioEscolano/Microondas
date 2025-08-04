@@ -10,14 +10,8 @@ namespace Microondas.Controllers
 {
     public class HomeController : Controller
     {
-        //private readonly ILogger<HomeController> _logger;
         private readonly AppDbContext _context;
         public AcaoManager _acaoManager = new AcaoManager();
-
-        //public HomeController(ILogger<HomeController> logger)
-        //{
-        //    _logger = logger;
-        //}
 
         public HomeController(AppDbContext context)
         {
@@ -26,9 +20,17 @@ namespace Microondas.Controllers
 
         public IActionResult Index()
         {
-            ProgramacaoViewModel _programacaoViewModel = new ProgramacaoViewModel();
-            _programacaoViewModel._programacao = _context.Programacao.ToList();
-            return View(_programacaoViewModel);
+            try
+            {
+                ProgramacaoViewModel _programacaoViewModel = new ProgramacaoViewModel();
+                _programacaoViewModel._programacao = _context.Programacao.ToList();
+                return View(_programacaoViewModel);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
 
         public IActionResult Privacy()
@@ -39,33 +41,49 @@ namespace Microondas.Controllers
         [HttpPost]
         public JsonResult RecebeDados(EntredaVW _dados)
         {
-            if (_dados != null)
+            try
             {
-                _dados = _acaoManager.VerificaDados(_dados);
-            }
+                if (_dados != null)
+                {
+                    _dados = _acaoManager.VerificaDados(_dados);
+                }
 
-            return Json(_dados);
+                return Json(_dados);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
 
         [HttpPost]
         public JsonResult RecebeDadosProgramacao(int _id)
         {
-            ProgramacaoModel _programacao = new ProgramacaoModel();
-            ProgramacaoVW _programacaoVW = new ProgramacaoVW();
-            if (_id > 0)
+            try
             {
-                _programacao = _context.Programacao.Where(p => p.idProgramacao == _id).FirstOrDefault();
+                ProgramacaoModel _programacao = new ProgramacaoModel();
+                ProgramacaoVW _programacaoVW = new ProgramacaoVW();
+                if (_id > 0)
+                {
+                    _programacao = _context.Programacao.Where(p => p.idProgramacao == _id).FirstOrDefault();
 
-                _programacaoVW.idProgramacao = _programacao.idProgramacao;
-                _programacaoVW.nomeDaProgramacao = _programacao.nomeDaProgramacao;
-                _programacaoVW.alimento = _programacao.alimento;
-                _programacaoVW.tempo = _acaoManager.TrataTempo(_programacao.tempo);
-                _programacaoVW.potencia = _programacao.potencia;
-                _programacaoVW.stringDeAquecimento = _programacao.stringDeAquecimento;
-                _programacaoVW.instrucoesComplementares = _programacao.instrucoesComplementares;
+                    _programacaoVW.idProgramacao = _programacao.idProgramacao;
+                    _programacaoVW.nomeDaProgramacao = _programacao.nomeDaProgramacao;
+                    _programacaoVW.alimento = _programacao.alimento;
+                    _programacaoVW.tempo = _acaoManager.TrataTempo(_programacao.tempo);
+                    _programacaoVW.potencia = _programacao.potencia;
+                    _programacaoVW.stringDeAquecimento = _programacao.stringDeAquecimento;
+                    _programacaoVW.instrucoesComplementares = _programacao.instrucoesComplementares;
+                }
+
+                return Json(_programacaoVW);
             }
+            catch (Exception)
+            {
 
-            return Json(_programacaoVW);
+                throw;
+            }
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

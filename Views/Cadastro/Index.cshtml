@@ -1,34 +1,43 @@
-﻿@{
+﻿@model Microondas.Models.ProgramacaoModel
+@{
     ViewData["Title"] = "Cadastro";
 }
 
 <div class="text-center">
     <h1 class="display-4">Microondas -> Cadastro de Nova Programação</h1>
 
-    <div id="div_geral_campos_cadastro">
-        <div id="div_cadastro_linha">
-            <label class="titulo_cadastro">Nome Da Programação</label>
-            <input type="text" class="campo_cadastro" id="nomeDaProgramcao" value="" maxlength="100" placeholder="Digite o nome desta programação." />
+    <form method="post" action="@Url.Action("CadastroProgramacao", "Cadastro")" enctype="application/x-www-form-urlencoded">
+        <div id="div_geral_campos_cadastro">
+            <div id="div_cadastro_linha">
+                <label class="titulo_cadastro">Nome Da Programação</label>
+                <input type="text" class="campo_cadastro" id="nomeDaProgramacao" name="_model.nomeDaProgramacao" value="" maxlength="100" placeholder="Digite o nome desta programação." />
+            </div>
+            <div id="div_cadastro_linha">
+                <label class="titulo_cadastro">Nome do Alimento</label>
+                <input type="text" class="campo_cadastro" id="alimento" name="_model.alimento" value="" maxlength="50" placeholder="Digite o nome do alimento." />
+            </div>
+            <div id="div_cadastro_linha">
+                <label class="titulo_cadastro">Tempo Recomendado</label>
+                <input type="text" class="campo_cadastro" id="tempo" name="_model.tempo" value="" max="1000" placeholder="120 Segundos equivalem à 02:00 Minutos por exemplo." />
+            </div>
+            <div id="div_cadastro_linha">
+                <label class="titulo_cadastro">Potencia</label>
+                <input type="text" class="campo_cadastro" id="potencia" name="_model.potencia" value="" max="10" placeholder="Potência máxima permitida é 10!" />
+            </div>
+            <div id="div_cadastro_linha">
+                <label class="titulo_cadastro">Símbolo De Aquecimento</label>
+                <input type="text" class="campo_cadastro" id="stringDeAquecimento" name="_model.stringDeAquecimento" value="" maxlength="10" placeholder="Não é permitido repetir símbolos. Exemplo §" />
+            </div>
+            <div id="div_cadastro_linha_area">
+                <label class="titulo_cadastro">Instrucoes Complementares</label>
+                <input type="text" class="campo_cadastro_area" id="instrucoesComplementares" name="_model.instrucoesComplementares" value="" maxlength="300" placeholder="Descreva como será realizado o uso desta programação." />
+            </div>
+            <div id="div_cadastro_linha">
+                <input type="submit" class="botao" value="Cadastrar Programação" />
+            </div>
         </div>
-        <div id="div_cadastro_linha">
-            <label class="titulo_cadastro">Nome do Alimento</label>
-            <input type="text" class="campo_cadastro" id="alimento" value="" maxlength="50" placeholder="Digite o nome do alimento." />
-        </div>
-        <div id="div_cadastro_linha">
-            <label class="titulo_cadastro">Tempo Recomendado</label>
-            <input type="text" class="campo_cadastro" id="tempo" value="" maxlength="1000" placeholder="120 Segundos equivalem à 02:00 Minutos por exemplo." />
-        </div>
-        <div id="div_cadastro_linha">
-            <label class="titulo_cadastro">Potencia</label>
-            <input type="text" class="campo_cadastro" id="potencia" value="" maxlength="100" placeholder="Potência máxima permitida é 10!" />
-        </div>
-        <div id="div_cadastro_linha">
-            <label class="titulo_cadastro">Símbolo De Aquecimento</label>
-            <input type="text" class="campo_cadastro" id="stringDeAquecimento" value="" maxlength="100" placeholder="Não é permitido repetir símbolos. Exemplo §" />
-        </div>
-        <div id="div_cadastro_linha_area">
-            <label class="titulo_cadastro">Instrucoes Complementares</label>
-            <input type="text" class="campo_cadastro_area" id="instrucoesComplementares" value="" maxlength="100" placeholder="Descreva como será realizado o uso desta programação." />
-        </div>
-    </div>
+    </form>
 </div>
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
